@@ -1,0 +1,62 @@
+<html>
+
+	<head> <!-- BEGIN header -->
+	<title>NBA Finals Teams</title>
+
+		<!-- Latest compiled and minified bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+		<!-- manually add some padding so the nav bar doesn't overlap with body using inline style
+		we only have to do this because the navbar is fixed to top, you should remove if you take that property away -->
+  <style>
+			body {
+				padding-top: 60px;
+			}
+	</style>
+
+	</head> <!-- END header -->
+
+	      <body style="background-color: #fcf3cf"><!-- BEGIN body -->
+
+
+
+	     	<div class="container">
+
+		    <div class="starter-template">
+
+		   	<h1><center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/The_NBA_Finals_logo.svg/2000px-The_NBA_Finals_logo.svg.png" width = "620" height="150"></center></h1>
+				<center><img src="https://logos-download.com/wp-content/uploads/2016/04/Cleveland_Cavaliers_logo_logotype_emblem.png" width="200" height="100"><img src = "https://s3.amazonaws.com/freebiesupply/thumbs/2x/golden-state-warriors-logo.png" width="200" height="150"></center>
+
+
+
+		       	<div id="alertBox"></div>
+
+			      <table class="table table-hover" id="cavsTeam">
+				    <tbody>
+					  <tr class="dnd-moved info">
+						<th data-field="player">Player</th>
+						<th data-field="rating">Rating</th>
+						<th data-field="position">Position</th>
+						<th></th>
+				   	</tr>
+			    	</tbody>
+			      </table>
+
+		      	<button type="button" class="btn btn-info navbar-btn" onClick="subCavs()">Substitute</button>
+
+						<table class="table table-hover" id="warriorsTeam">
+			     	<tbody>
+					  <tr class="dnd-moved info">
+						<th data-field="player">Player</th>
+						<th data-field="rating">Rating</th>
+						<th data-field="position">Position</th>
+						<th></th>
+				   	</tr>
+				    </tbody>
+		      	</table>
+
+			       <button type="button" class="btn btn-success navbar-btn" onClick="subWarriors()">Substitute</button>
+
+    </div>
+		</div>
+		<script>

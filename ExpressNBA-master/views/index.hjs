@@ -1,0 +1,298 @@
+<html>
+
+	<head> <!-- BEGIN header -->
+	<title>NBA Finals Teams</title>
+
+		<!-- Latest compiled and minified bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+		<!-- manually add some padding so the nav bar doesn't overlap with body using inline style
+		we only have to do this because the navbar is fixed to top, you should remove if you take that property away -->
+  <style>
+			body {
+				padding-top: 60px;
+			}
+	</style>
+
+	</head> <!-- END header -->
+
+	      <body style="background-color: #fcf3cf"><!-- BEGIN body -->
+
+
+
+	     	<div class="container">
+
+		    <div class="starter-template">
+
+		   	<h1><center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/The_NBA_Finals_logo.svg/2000px-The_NBA_Finals_logo.svg.png" width = "620" height="150"></center></h1>
+				<center><img src="https://logos-download.com/wp-content/uploads/2016/04/Cleveland_Cavaliers_logo_logotype_emblem.png" width="200" height="100"><img src = "https://s3.amazonaws.com/freebiesupply/thumbs/2x/golden-state-warriors-logo.png" width="200" height="150"></center>
+
+
+
+		       	<div id="alertBox"></div>
+
+			      <table class="table table-hover" id="cavsTeam">
+				    <tbody>
+					  <tr class="dnd-moved info">
+						<th data-field="player">Player</th>
+						<th data-field="rating">Rating</th>
+						<th data-field="position">Position</th>
+						<th></th>
+				   	</tr>
+			    	</tbody>
+			      </table>
+
+		      	<button type="button" class="btn btn-info navbar-btn" onClick="subCavs()">Substitute</button>
+
+						<table class="table table-hover" id="warriorsTeam">
+			     	<tbody>
+					  <tr class="dnd-moved info">
+						<th data-field="player">Player</th>
+						<th data-field="rating">Rating</th>
+						<th data-field="position">Position</th>
+						<th></th>
+				   	</tr>
+				    </tbody>
+		      	</table>
+
+			       <button type="button" class="btn btn-success navbar-btn" onClick="subWarriors()">Substitute</button>
+
+    </div>
+		</div>
+		<script>
+
+    ///================================================================================================================================
+///================================================================================================================================
+///================================================================================================================================
+
+
+var counterCavs = 0;
+var counterWars = 0;
+
+
+var cavsRecords = [ {name: "Isiah Thomas", rating: 89, position: "PG", isPlaying: true},
+                  {name: "JR Smith", rating: 75, position: "SG", isPlaying: true},
+	                {name: "LeBron James", rating: 98, position: "SF", isPlaying: true},
+									{name: "Kevin Love", rating: 88, position: "PF", isPlaying: true},
+									{name: "Tristian Thompson", rating: 80, position: "C", isPlaying: true},
+
+									{name: "Jeff Green", rating: 80, position: "SF", isPlaying: false},
+									{name: "Kyle Korver", rating: 78, position: "SG", isPlaying: false},
+									{name: "Derrick Rose", rating: 77, position: "PG", isPlaying: false},
+									{name: "Jae Crowder", rating: 76, position: "PF", isPlaying: false},
+									{name: "Channing Frye", rating: 74, position: "PF", isPlaying: false},
+									{name: "Dwayne Wade", rating: 80, position: "SG", isPlaying: false},
+									{name: "Iman Shumpert", rating: 72, position: "SG", isPlaying: false}, ];
+
+
+			var warriorRecords = [ {name: "Stephen Curry", rating: 96, position: "PG", isPlaying: true},
+														 {name: "Klay Thompson", rating: 90, position: "SG", isPlaying: true},
+								           	{name: "Kevin Durant", rating: 96, position: "SF", isPlaying: true},
+									          {name: "Draymond Green", rating: 87, position: "PF", isPlaying: true},
+									          {name: "Zaza Pachulia", rating: 77, position: "C", isPlaying: true},
+
+														{name: "Andre Iguodala", rating: 78, position: "SF", isPlaying: false},
+														{name: "David West", rating: 76, position: "PF", isPlaying: false},
+														{name: "Nick Young", rating: 75, position: "SF", isPlaying: false},
+														{name: "Shaun Livingston", rating: 78, position: "PG", isPlaying: false},
+														{name: "Patrick McCaw", rating: 73, position: "SG", isPlaying: false},
+								            {name: "Jordan Bell", rating: 71, position: "PF", isPlaying: false},
+									          {name: "JaVale McGee", rating: 74, position: "C", isPlaying: false}, ];
+
+			function drawTable() {
+
+
+				var table = document.getElementById("cavsTeam");
+
+				clearTable(table);
+				var counter = 0;
+
+				for(i = 0; i < cavsRecords.length; i++) {
+					// Create an empty <tr> element and add it to the ith position of the table:
+					var row = table.insertRow(i+1);
+
+					// get currentStudent object from list/array of students
+					var currentPlayer = cavsRecords[i];
+
+
+					if (currentPlayer.isPlaying) {
+					// Insert new cells (<td> elements) at the 0-3rd positions of the "new" <tr> element:
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					//var cell4 = row.insertCell(3);
+
+					// Add relevant text to the new cells
+
+
+					cell1.innerHTML = currentPlayer.name;
+					cell2.innerHTML = currentPlayer.rating;
+					cell3.innerHTML = currentPlayer.position;
+			   	}
+
+					//cell4.innerHTML = '<button type="button" class="btn btn-primary" onClick="updateGPA(this)">Update</button>';
+
+				}
+
+			}
+
+			function drawTable2() {
+				// Find a <table> element with id="gpaTable":
+				var table = document.getElementById("warriorsTeam");
+
+				clearTable(table);
+
+				for(i = 0; i < warriorRecords.length; i++) {
+					// Create an empty <tr> element and add it to the ith position of the table:
+					var row = table.insertRow(i+1);
+
+					var currentPlayer = warriorRecords[i];
+
+
+					if (currentPlayer.isPlaying) {
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+
+					cell1.innerHTML = currentPlayer.name;
+					cell2.innerHTML = currentPlayer.rating;
+					cell3.innerHTML = currentPlayer.position;
+			  	}
+					//cell4.innerHTML = '<button type="button" class="btn btn-primary" onClick="nowPlaying(this)">Update</button>';
+
+				}
+
+			}
+
+
+			function clearTable(table) {
+				var numRows = table.getElementsByTagName("tr").length;
+
+
+				for(i = numRows - 1; i > 0; i--){
+					table.deleteRow(i);
+				}
+			}
+
+			function subCavs() {
+
+				// if(callback) {
+				// 	callback();
+				// }
+
+				  var outName = prompt("Who is substituting out?");
+					var subbedOut = false;
+
+				  for(i = 0; i < cavsRecords.length; i++) {
+					var newPlayer = cavsRecords[i];
+				 	if (cavsRecords[i].name == outName && cavsRecords[i].isPlaying) {
+						cavsRecords[i].isPlaying = false;
+						subbedOut = true;
+					}
+				  }
+
+					if (!subbedOut) {
+						var alertBox = document.getElementById("alertBox");
+						alertBox.innerHTML = '<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Failure!</strong> That is not a valid player or is already out of the game.</div>'
+					  return;
+					}
+
+
+			  var inName = prompt("Who is replacing " + outName + "?");
+				var subbedIn = false;
+
+				for(i = 0; i < cavsRecords.length; i++) {
+        var newPlayer = cavsRecords[i];
+				if(cavsRecords[i].name == inName && !cavsRecords[i].isPlaying) {
+					newPlayer.isPlaying = true;
+					subbedIn = true;
+					counterCavs++;
+				}
+		   	}
+
+				if (!subbedIn) {
+					var alertBox = document.getElementById("alertBox");
+					alertBox.innerHTML = '<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Failure!</strong> That is not a valid player or is already in the game.</div>'
+					for(i = 0; i < cavsRecords.length; i++) {
+						if (cavsRecords[i].name == outName) {
+							cavsRecords[i].isPlaying = true;
+					}
+				  }
+					return;
+				}
+
+				newTable(counterCavs);
+				//drawTable();
+
+			}
+
+			function subWarriors() {
+
+					var outName = prompt("Who is substituting out?");
+					var subbedOut = false;
+
+					for(i = 0; i < warriorRecords.length; i++) {
+					var newPlayer = warriorRecords[i];
+					if (warriorRecords[i].name == outName && warriorRecords[i].isPlaying) {
+						warriorRecords[i].isPlaying = false;
+						subbedOut = true;
+					}
+					}
+
+					if (!subbedOut) {
+						var alertBox = document.getElementById("alertBox");
+						alertBox.innerHTML = '<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Failure!</strong> That is not a valid player or is already out of the game.</div>'
+						return;
+					}
+
+
+				var inName = prompt("Who is replacing " + outName + "?");
+				var subbedIn = false;
+
+				for(i = 0; i < warriorRecords.length; i++) {
+				var newPlayer = warriorRecords[i];
+				if(warriorRecords[i].name == inName && !warriorRecords[i].isPlaying) {
+					newPlayer.isPlaying = true;
+					subbedIn = true;
+					counterWars++;
+				}
+				}
+
+				if (!subbedIn) {
+					var alertBox = document.getElementById("alertBox");
+					alertBox.innerHTML = '<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Failure!</strong> That is not a valid player or is already in the game.</div>'
+					for(i = 0; i < warriorRecords.length; i++) {
+						if (warriorRecords[i].name == outName) {
+							warriorRecords[i].isPlaying = true;
+					}
+					}
+					return;
+				}
+
+
+				drawTable2();
+
+			}
+
+			var newTable = function createTable(n) {
+				if (n > 5) {
+					alertBox.innerHTML = '<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Failure!</strong> You have reached your maximum player substitute limit.</div>'
+				}
+			}
+
+
+///==================================================================================================================================
+///==================================================================================================================================
+///==================================================================================================================================
+
+
+			drawTable();
+			drawTable2();
+
+
+
+		</script>
+
+	</body> <!-- END body -->
+
+</html>

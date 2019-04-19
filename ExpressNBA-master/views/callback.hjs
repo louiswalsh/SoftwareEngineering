@@ -1,0 +1,24 @@
+<html>
+	<head>
+	<title>NBA Finals Teams</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	</head>
+
+  <div id="alertBox"></div>
+	<script>
+
+  function subPlayer(name, position, rating, callback) {
+    alertBox.innerHTML = '<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Success!</strong> Added player to game.</div>'
+
+    if(callback) {
+      callback();
+    }
+  }
+
+
+subPlayer ('Lebron James', 'SF', 98);
+
+subPlayer('Steph Curry', 'PG', 96, function()) {
+  alertBox.innerHTML = '<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Warning!</strong> You have reached your maximum number of subs.</div>'
+
+}
